@@ -1,0 +1,33 @@
+//Java Program for reversing Vowels
+
+
+class Main {
+    public static void main(String[] args) {
+        String input="Arun".replaceAll(" ","").toLowerCase();
+        System.out.println(reverseVowel(input));
+    }   
+
+public static String reverseVowel(String inputString){
+    char temp;
+    char[] inputCharArray = inputString.toCharArray();
+    int right=inputString.length()-1;int left=0;
+    while(inputCharArray[left]<inputCharArray[right]){
+         while(!vowelOrNot(inputCharArray[left])){
+            left++;
+        }
+        while(!vowelOrNot(inputCharArray[right])){
+             right--;
+        }
+        
+        temp = inputCharArray[right];
+        inputCharArray[right]=inputCharArray[left];
+        inputCharArray[left]=temp;
+        left++;
+        right--;
+    }
+return new String(inputCharArray);
+}
+ public static boolean vowelOrNot(char element){
+          return "aeiouAEIOU".indexOf(element)!=-1; 
+ }
+}
