@@ -1,0 +1,37 @@
+
+import java.util.*;
+class Main {
+     static HashMap<Character, Integer> duplicateMap = new HashMap<>();
+    public static void main(String[] args) {
+        HashMap<String, Integer> map = new HashMap<>();
+      
+        String[] input = "I am doingo good".toLowerCase().split(" ");
+         int maxLength=0;
+        for(String s: input){
+            if(findLength(s)>maxLength){
+                maxLength=findLength(s);
+            }
+            map.put(s, findLength(s));
+        }
+      for(String s: input){
+        if(map.get(s).equals(maxLength))
+        findDuplicate(s);
+      }
+        
+    }
+
+    public static int findLength(String str){
+      return str.length();
+    }
+
+    public static void findDuplicate(String str){
+    duplicateMap.clear();
+    char[] ch = str.toCharArray();
+    for(char c : ch){
+       duplicateMap.put(c, duplicateMap.getOrDefault(c, 0) + 1);   
+        }
+    for(Map.Entry<Character, Integer> entry :duplicateMap.entrySet()){
+            System.out.println(entry.getKey()+" repeated "+ entry.getValue()+" times.");
+        }
+    }
+}
